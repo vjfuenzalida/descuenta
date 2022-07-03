@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: descuenta
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    ports:
+      - 9229:9229
+    command: npm run start
+    environment:
+      TIMEZONE: ${TIMEZONE}
